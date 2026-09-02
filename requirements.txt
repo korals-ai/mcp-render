@@ -1,0 +1,10 @@
+# Runtime dependencies for the workspace-tool-render sidecar image.
+# Keep in sync with [project.dependencies] in pyproject.toml.
+
+# MCP server SDK: FastMCP + Streamable HTTP transport. Exposes the
+# `render_html_to_pdf` tool over http://localhost:8095/mcp.
+mcp>=1.2,<2
+
+# HTML/CSS → PDF for tender deliverables. Moved here from the workspace image;
+# links the native cairo/pango/gdk-pixbuf libs the Dockerfile installs.
+weasyprint>=63
