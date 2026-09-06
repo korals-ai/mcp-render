@@ -25,8 +25,8 @@ from src.render_ops import RenderError
 
 log = logging.getLogger("workspace-tool-render")
 
-HOST = os.environ.get("WORKSPACE_TOOL_HOST", "0.0.0.0")  # noqa: S104 - pod-local, reached via localhost
-PORT = int(os.environ.get("WORKSPACE_TOOL_PORT", "8095"))
+HOST = "0.0.0.0"  # noqa: S104 - pod-local bind; nothing injects a host, the pod netns is the fence
+PORT = int(os.environ["WORKSPACE_TOOL_PORT"])
 
 mcp = FastMCP("render", host=HOST, port=PORT)
 
