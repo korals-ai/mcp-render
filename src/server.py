@@ -18,6 +18,7 @@ import os
 import time
 from pathlib import Path
 
+import toollog
 from mcp.server.fastmcp import FastMCP
 
 from src import render_ops
@@ -71,7 +72,7 @@ def render_html_to_pdf(src: str, dst: str | None = None, stylesheet: str | None 
 
 def main() -> None:
     """Run the MCP server forever over Streamable HTTP. Blocks; entrypoint."""
-    logging.basicConfig(level=logging.INFO)
+    toollog.configure("render")
     log.info("workspace-tool-render MCP server on %s:%d (/mcp)", HOST, PORT)
     mcp.run(transport="streamable-http")
 
