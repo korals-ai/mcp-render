@@ -32,6 +32,10 @@ PORT = int(os.environ["WORKSPACE_TOOL_PORT"])
 
 mcp = FastMCP("render", host=HOST, port=PORT, lifespan=loopwatch.lifespan)
 
+# The liveness target. Answered by the loop above, so silence means wedged —
+# see loopwatch.serve_health.
+loopwatch.serve_health(mcp)
+
 
 @mcp.tool()
 def render_html_to_pdf(src: str, dst: str | None = None, stylesheet: str | None = None) -> str:
